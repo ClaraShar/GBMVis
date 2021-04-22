@@ -1,0 +1,23 @@
+{
+  "name": "gbmvis",
+  "version": "1.0.0",
+  "description": "This is a visual analytics system about gradient boosting machine. ",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/ClaraShar/GBMVis.git"
+  },
+  "keywords": [
+    "react",
+    "redux"
+  ],
+  "author": "Clara",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/ClaraShar/GBMVis/issues"
+  },
+  "homepage": "https://github.com/ClaraShar/GBMVis#readme"
+}
