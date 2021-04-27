@@ -6,21 +6,40 @@ var dir=['LR','TB'];
 var btnswitch=0;
 var cellheight=[70,100];
 var cellwidth=[450,150];
+var tip=["cal1_f","cal1_m","linear_f","linear_m","1_hw","1_lib","2_lib","2_hw"
+,"3_lib","3_hw","4_lib","4_hw","5_lib","5_hw","6_lib","6_hw","7_lib","7_hw","8_lib","8_hw",
+"9_lib","9_hw","10_lib","10_hw","11_lib","11_hw","12_lib","12_hw"]
+var color=["#FFB6C1","#C71585","#FF00FF","#9400D3","#4B0082","#6A5ACD","#0000FF"
+,"#87CEFA","#48D1CC","#00FA9A","#00FF00","#ADFF2F","#FFFF00","#F0E68C",
+"#DAA520","#FFA500","#FF4500","#E9967A","#FA8072","#B22222","#FFEFD5",
+"#F0E68C","#006400","#008000","#40E0D0","#008080","#2F4F4F","#1E90FF"];
 function traverse(obj,flag){
+    tipcolor="#87CEFA";
     if(obj.label.includes("leaf")){
+        
         NODE={
             id: id,
             label: obj.label,
             shape: "ellipse",
-            name:obj.id
+            name:obj.id,
+            color:tipcolor
         }
     }
     else{
+        for(i=0;i<tip.length;i++){
+            console.log(tip[i])
+            console.log(obj.label)
+            if(obj.label.includes(tip[i])){
+                tipcolor=color[i];
+                console.log(tipcolor)
+            }
+        }
         NODE={
             id: id,
             label: obj.label,
             shape: "rect",
-            name:obj.id
+            name:obj.id,
+            color:tipcolor
         }
     }
     
@@ -75,7 +94,7 @@ function render(){
         id: el.id,
         shape:el.shape,
         label: el.label,
-        style: "fill:#87CEFA;stroke:#333;stroke-width:1.5px"//节点样式
+        style: "fill:"+el.color+";stroke:#333;stroke-width:1.5px"//节点样式
     });
     }
     

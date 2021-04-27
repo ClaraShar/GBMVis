@@ -6,6 +6,15 @@ import Hi from '../Hi/Hi'
 import style from './style.css'
 
 export default class TsneGraph extends Component{
+    // constructor(props){
+    //     super(props);
+    //     this.state = {
+    //         sid : '2906007032',
+    //         // '0' : '',
+    //         // '1' : '',
+    //         // prob : ''
+    //     }
+    // }
     getOption() {
         var json = [{"sid":"2906007032","0":14.1933422089,"1":-40.0431556702,"prob":0.9179556841},{"sid":"2010032020022","0":-9.8068284988,"1":-29.9540367126,"prob":0.8802195651},{"sid":"2911102001","0":-15.7183656693,"1":-52.1439857483,"prob":0.9431284733}],
             data = [],
@@ -93,13 +102,23 @@ export default class TsneGraph extends Component{
             ]
         }
     }
+
+    onClickItem = (params) => {
+        console.log("params.data.sid",params)
+        this.props.handleEvent(params.data[2])
+    }
+
     render(){
+        const onEvents = {
+            "click": this.onClickItem
+        }
         return(
             <div className="tsne">
                 <ReactEcharts
                     option={this.getOption()}
                     notMerge={true}
                     lazyUpdate={true}
+                    onEvents={onEvents}
                 />
                 <Hi />
             </div>
