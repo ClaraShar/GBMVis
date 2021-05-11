@@ -22,6 +22,9 @@ class General extends Component {
     render() {
         return(
             <div className="general-container">
+                <div className="tsne">
+                    <TsneGraph />
+                </div>
             </div>
         )
     }
@@ -39,6 +42,4 @@ const mapDispatchToProps = (dispatch) => {
     }
 }
 
-const General = connect(mapStateToProps, mapDispatchToProps)(TsneGraph)
-
-export default General
+export default connect(mapStateToProps, mapDispatchToProps)(General)

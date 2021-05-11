@@ -1,18 +1,16 @@
 import React from 'react'
 import ReactDom from 'react-dom'
-import RedarGraph from './components/RedarGraph/RedarGraphComponent'
-import { createStore } from 'redux'
-import { Provider } from 'react-redux';
-import rootReducer from './reducers/index'
+import AppIndex from './components/AppIndex'
+import configStore from './reducers/store'
+import { Provider } from 'react-redux'
 
 // 热模块替换，和路由有关的暂不修改（renderWithHotReload）
 if (module.hot) {
     module.hot.accept();
 }
 
-const store = createStore(rootReducer)
-
+const store = configStore()
 ReactDom.render(
     <Provider store={store}>
-        <RedarGraph />
+        <AppIndex />
     </Provider>, document.getElementById('app'))

@@ -4,5 +4,5 @@ module.exports = function(app) {
         res.send('hello express!')
     })
     //获取tsne散点图使用
-    app.get('./tsne', require('./tsne'))
+    app.get('/tsne', require('./tsne'))
 };

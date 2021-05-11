@@ -32,5 +32,6 @@ module.exports = {
         contentBase: path.join(__dirname, './dist'),//URL的根目录。如果不设定的话，默认指向项目根目录。
         historyApiFallback: true,
         host: '0.0.0.0'
-    }
+    },
+    devtool: 'inline-source-map', // 调试代码用，可以定位到错误源码源文件，而不是bundle.js
 };
