@@ -1,0 +1,186 @@
+const columns = [
+    {
+      title:'sid',         //列名称
+      dataIndex:'sid',      //数据源的字段名
+      key: 'sid',
+      fixed: 'left',
+      width: 200,
+    },
+    {
+      title:'cal1_f',
+      dataIndex:'cal1_f',
+      key: 'cal1_f',
+      width: 250,
+    },
+    {
+      title:'cal1_m',
+      dataIndex:'cal1_m',
+      key: 'cal1_m',
+      width: 250,
+    },
+    {
+      title:'linear_f',
+      dataIndex:'linear_f',
+      key: 'linear_f',
+      width: 250,
+    },
+    {
+      title:'linear_m',
+      dataIndex:'linear_m',
+      key: 'linear_m',
+      width: 250,
+    },
+    {
+      title:'1_lib',
+      dataIndex:'1_lib',
+      key: '1_lib',
+      width: 250,
+    },
+    {
+      title:'2_lib',
+      dataIndex:'2_lib',
+      key: '2_lib',
+      width: 250,
+    },
+    {
+      title:'3_lib',
+      dataIndex:'3_lib',
+      key: '3_lib',
+      width: 250,
+    },
+    {
+      title:'4_lib',
+      dataIndex:'4_lib',
+      key: '4_lib',
+      width: 250,
+    },
+    ,
+    {
+      title:'5_lib',
+      dataIndex:'5_lib',
+      key: '5_lib',
+      width: 250,
+    },
+    ,
+    {
+      title:'6_lib',
+      dataIndex:'6_lib',
+      key: '6_lib',
+      width: 250,
+    },
+    ,
+    {
+      title:'7_lib',
+      dataIndex:'7_lib',
+      key: '7_lib',
+      width: 250,
+    },
+    ,
+    {
+      title:'8_lib',
+      dataIndex:'8_lib',
+      key: '8_lib',
+      width: 250,
+    },
+    ,
+    {
+      title:'9_lib',
+      dataIndex:'9_lib',
+      key: '9_lib',
+      width: 250,
+    },
+    ,
+    {
+      title:'10_lib',
+      dataIndex:'10_lib',
+      key: '10_lib',
+      width: 250,
+    },
+    ,
+    {
+      title:'11_lib',
+      dataIndex:'11_lib',
+      key: '11_lib',
+      width: 250,
+    },
+    {
+      title:'12_lib',
+      dataIndex:'12_lib',
+      key: '12_lib',
+      width: 250,
+    },
+    {
+      title:'1_hw',
+      dataIndex:'1_hw',
+      key: '1_hw',
+      width: 250,
+    },
+    {
+      title:'2_hw',
+      dataIndex:'2_hw',
+      key: '2_hw',
+      width: 250,
+    },
+    {
+      title:'3_hw',
+      dataIndex:'3_hw',
+      key: '3_hw',
+      width: 250,
+    },
+    {
+      title:'4_hw',
+      dataIndex:'4_hw',
+      key: '4_hw',
+      width: 250,
+    },
+    {
+      title:'5_hw',
+      dataIndex:'5_hw',
+      key: '5_hw',
+      width: 250,
+    },
+    {
+      title:'6_hw',
+      dataIndex:'6_hw',
+      key: '6_hw',
+      width: 250,
+    },
+    {
+      title:'7_hw',
+      dataIndex:'7_hw',
+      key: '7_hw',
+      width: 250,
+    },
+    {
+      title:'8_hw',
+      dataIndex:'8_hw',
+      key: '8_hw',
+      width: 250,
+    },
+    {
+      title:'9_hw',
+      dataIndex:'9_hw',
+      key: '9_hw',
+      width: 250,
+    },
+    {
+      title:'10_hw',
+      dataIndex:'10_hw',
+      key: '10_hw',
+      width: 250,
+    },
+    {
+      title:'11_hw',
+      dataIndex:'11_hw',
+      key: '11_hw',
+      width: 250,
+    },
+    {
+      title:'12_hw',
+      dataIndex:'12_hw',
+      key: '12_hw',
+      width: 250,
+    }
+  ]
+
+export default columns;

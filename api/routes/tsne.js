@@ -1,23 +1,16 @@
 let util = require('./util')
-let tsneModel = require('../../models/tsne')
+let tsneModel = require('../../models/tsnes')
 
-//雨薇姐写的feature是连表查询，所以我暂时模仿一下
-function queryTsne(req, res, next) {
+function queryTsne(req, res) {
     new Promise((resolve, reject) => {
-        tsneModel.find({_id: 0})
-        .then(res => {
-            let tsne_list = res.map(e => e.sid)
-            resolve(tsne_list)
+        tsneModel.find({})
+        .then(result => {
+            let responseData = { data: {}}
+            responseData.data = result;
+            util.responseClient(res, 200, 1, 'success', responseData);
         })
-    }).then(tsne_list => {
-        tsneModel.find({ sid: { $in: tsne_list} })
-        .then((result) => {
-            let responseData = { tsne: {}}
-            responseData.tsne = result;
-            util.responseClient(res, 200, 0, 'success', responseData)
-        })
-    }).catch((error) => {
-        console.log(error)
+    }).catch((err) => {
+        console.log(err)
     })
 }
 

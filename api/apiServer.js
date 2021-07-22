@@ -1,11 +1,10 @@
 var express = require('express')
-var bodyParser = require('body-parser')
 var mongoose = require('mongoose')
 var bluebird = require('bluebird')
 var routers = require('./routes/index')
 
 const app = new express()
-routers(app)//不懂
+routers(app)
 
 var dbPort = '27017'
 var dbHost = 'localhost'

@@ -1,8 +1,19 @@
-module.exports = function(app) {
-    //应该用不上，先写着吧
-    app.get('/', function(req, res){
-        res.send('hello express!')
+var express = require('express')
+
+module.exports = function(app){
+    app.use(express.json())
+    app.use(express.urlencoded({ extended: false }))
+    
+    app.get('/',function(req,res){
+      res.send('hello world')
     })
+
     //获取tsne散点图使用
-    app.get('/tsne', require('./tsne'))
-};
+    app.get('/api/tsne', require('./tsne'))
+
+    //获取单一数据的特征
+    app.get('/api/getOneFeature', require('./getOneFeature'))
+
+    //获取全部数据的特征
+    app.get('/api/features', require('./features'))
+}

@@ -1,33 +1,48 @@
 import React, { Component } from 'react'
-import * as echarts from 'echarts'
 import * as d3 from 'd3'
 import ReactEcharts from 'echarts-for-react'
-import Hi from '../Hi/Hi'
-import style from './style.css'
+import './style.css'
+import RedarGraph from '../RedarGraph/RedarGraphComponent';
+import InfoTable from '../InfoTable/InfoTableComponent'
 
 export default class TsneGraph extends Component{
-    // constructor(props){
-    //     super(props);
-    //     this.state = {
-    //         sid : '2906007032',
-    //         // '0' : '',
-    //         // '1' : '',
-    //         // prob : ''
-    //     }
-    // }
-    getOption() {
-        var json = [{"sid":"2906007032","0":14.1933422089,"1":-40.0431556702,"prob":0.9179556841},{"sid":"2010032020022","0":-9.8068284988,"1":-29.9540367126,"prob":0.8802195651},{"sid":"2911102001","0":-15.7183656693,"1":-52.1439857483,"prob":0.9431284733}],
-            data = [],
-            groupColors = [];
-        for(var i=0,l=json.length;i<l;i++){
-            var e=[];
-            e.push(json[i]['0']);
-            e.push(json[i]['1']);
-            e.push(json[i].sid);
-            e.push(json[i].prob);
-            data.push(e);
-            groupColors.push(d3.interpolateRdYlBu(json[i].prob));
+    constructor() {
+        super();
+        this.state = {
+            data: [],
+            groupColors: [],
+            sid: "2906007032"
         }
+    }
+
+    componentDidMount() {
+        fetch('/api/tsne', {
+            method: 'get',
+            headers: {
+                'Accept': 'application/json',
+            },
+        }).then(res => res.json())
+            .then(res => {
+                var json = res.data.data, 
+                    newdata = [],
+                    newgroupColors = [];
+                for(var i=0,l=json.length;i<l;i++){
+                    var e=[];
+                    e.push(json[i]['x']);
+                    e.push(json[i]['y']);
+                    e.push(json[i].sid);
+                    e.push(json[i].prob);
+                    newdata.push(e);
+                    newgroupColors.push(d3.interpolateRdYlBu(json[i].prob));
+                }
+                this.setState({
+                    data: newdata,
+                    groupColors: newgroupColors,
+                })
+          });
+    }
+
+    getOption = (colors) => {
         return {
             title:{
                 show:true,
@@ -85,27 +100,27 @@ export default class TsneGraph extends Component{
                         show: false     //取消刻度线
                     }
                 },
-                series: [{
-                    symbolSize: 5,
-                    data: data,
-                    type: 'scatter',
-                    itemStyle:{
-                        normal:{
-                            color: function(params) {
-                                // build a color map as your need.
-                                return groupColors[params.dataIndex]
-                            }
+            series: [{
+                symbolSize: 5,
+                data: this.state.data,
+                type: 'scatter',
+                itemStyle:{
+                    normal:{
+                        color: function(params) {
+                            // build a color map as your need.
+                            return colors[params.dataIndex];
                         }
-                        
-                    },
-                }   
-            ]
+                    }
+                },
+            }]
         }
     }
 
     onClickItem = (params) => {
-        console.log("params.data.sid",params)
-        this.props.handleEvent(params.data[2])
+        this.setState({
+            sid: params.data[2]
+        })
+        //点击之后state修改，传给Redargraph显示详情
     }
 
     render(){
@@ -115,12 +130,13 @@ export default class TsneGraph extends Component{
         return(
             <div className="tsne">
                 <ReactEcharts
-                    option={this.getOption()}
+                    option={this.getOption(this.state.groupColors)}
                     notMerge={true}
                     lazyUpdate={true}
                     onEvents={onEvents}
                 />
-                <Hi />
+                <RedarGraph value={this.state.sid}/>
+                <InfoTable value={this.state.sid}/>
             </div>
         )
     }

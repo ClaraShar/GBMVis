@@ -1,10 +1,12 @@
 const path = require('path');
+const webpack = require('webpack')
+const proxyUrl = 'http://localhost:3033'
 
 module.exports = {
  
     /*入口*/
     entry: [
-        'react-hot-loader/patch',
+        'react-hot-loader/patch','babel-polyfill',
         path.join(__dirname, 'src/index.js')
     ],
     
@@ -27,11 +29,17 @@ module.exports = {
             use: ['style-loader', 'css-loader']
         }]
     },
-    devServer: {
-        port: 8080,
-        contentBase: path.join(__dirname, './dist'),//URL的根目录。如果不设定的话，默认指向项目根目录。
-        historyApiFallback: true,
-        host: '0.0.0.0'
+    devServer:{
+        contentBase: './dist',
+        historyApiFallback: false,
+        host: '0.0.0.0',
+        hot: true,
+        proxy:{
+            '/api':'http://localhost:3033'
+        }
     },
+    plugins: [
+        new webpack.HotModuleReplacementPlugin()
+    ],
     devtool: 'inline-source-map', // 调试代码用，可以定位到错误源码源文件，而不是bundle.js
 };

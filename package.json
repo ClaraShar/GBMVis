@@ -17,9 +17,6 @@
     "react",
     "redux"
   ],
-  "proxy": {
-    "/api": "http://localhost:3000"
-  },
   "author": "Clara",
   "license": "ISC",
   "bugs": {
@@ -57,12 +54,14 @@
     "webpack-merge": "^4.1.0"
   },
   "dependencies": {
+    "antd": "^4.16.8",
     "axios": "^0.21.1",
     "d3": "^6.7.0",
     "echarts": "^5.1.0",
     "echarts-for-react": "^3.0.1",
     "react": "^17.0.2",
     "react-dom": "^17.0.2",
+    "react-highlight-words": "^0.17.0",
     "redux-thunk": "^2.3.0"
   }
 }
