@@ -8,7 +8,7 @@ export default class Hi extends Component{
         return(
             <div className="hi">
                 <TsneGraph />
-                Hi
+                <InfoTable />
             </div>
         )
     }

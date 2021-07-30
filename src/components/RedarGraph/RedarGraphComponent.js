@@ -15,6 +15,7 @@ export default class RedarGraph extends Component {
     }
 
     componentWillReceiveProps(newProps) {
+        console.log(newProps.value)
         fetch('/api/getOneFeature?sid=' + newProps.value, {
             method: 'get',
             headers: {
@@ -22,6 +23,7 @@ export default class RedarGraph extends Component {
                 },
             }).then(res => res.json())
                 .then(res => {
+                    console.log(res.data.data)
                     var newLib = [],
                         newHw = [],
                         newMath = [];
@@ -29,6 +31,8 @@ export default class RedarGraph extends Component {
                     newHw.push(res.data.data[i + '_hw'])
                     newLib.push(res.data.data[i + '_lib'])
                 }
+                newHw.reverse()
+                newLib.reverse()
                 newMath.push(res.data.data['cal1_f'])
                 newMath.push(res.data.data['cal1_m'])
                 newMath.push(res.data.data['linear_f'])
@@ -81,7 +85,7 @@ export default class RedarGraph extends Component {
                     indicator: (function (){
                         var res = [];
                         for (var i = 1; i <= 12; i++) {
-                            res.push({text: month[i], max: 100});
+                            res.push({text: month[i], max: 20});
                         }
                         return res;
                     })(),

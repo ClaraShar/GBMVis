@@ -2,7 +2,7 @@ import React, { Component } from 'react'
 import * as d3 from 'd3'
 import ReactEcharts from 'echarts-for-react'
 import './style.css'
-import RedarGraph from '../RedarGraph/RedarGraphComponent';
+import RedarGraph from '../RedarGraph/RedarGraphComponent'
 import InfoTable from '../InfoTable/InfoTableComponent'
 
 export default class TsneGraph extends Component{
@@ -136,7 +136,6 @@ export default class TsneGraph extends Component{
                     onEvents={onEvents}
                 />
                 <RedarGraph value={this.state.sid}/>
-                <InfoTable value={this.state.sid}/>
             </div>
         )
     }
