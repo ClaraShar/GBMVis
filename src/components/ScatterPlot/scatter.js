@@ -39,7 +39,7 @@ $.get("data/TPTNFPFNdata.json", function(data){
             right: 10,
             data: ['TP', 'TN','FP','FN'],
             textStyle:{
-                color:'#AAA',
+                color:'#FFF',
             },
         },
         xAxis: {
@@ -75,7 +75,7 @@ $.get("data/TPTNFPFNdata.json", function(data){
                 label: {
                     show: true,
                     textStyle:{
-                        color:'#AAA',
+                        color:'#FFF',
                     },
                     formatter: function (param) {
                         return "sid： "+param.data[2];
@@ -103,7 +103,7 @@ $.get("data/TPTNFPFNdata.json", function(data){
                 label: {
                     show: true,
                     textStyle:{
-                        color:'#AAA',
+                        color:'#FFF',
                     },
                     formatter: function (param) {
                         return "sid： "+param.data[2];
@@ -131,7 +131,7 @@ $.get("data/TPTNFPFNdata.json", function(data){
                 label: {
                     show: true,
                     textStyle:{
-                        color:'#AAA',
+                        color:'#FFF',
                     },
                     formatter: function (param) {
                         return "sid： "+param.data[2];

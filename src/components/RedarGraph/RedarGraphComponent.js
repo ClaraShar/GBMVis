@@ -1,6 +1,5 @@
 import React, { Component } from 'react'
 import ReactEcharts from 'echarts-for-react'
-import TsneGraph from '../TsneGraph/TsneGraphComponent'
 import './style.css'
 
 export default class RedarGraph extends Component {
@@ -47,7 +46,7 @@ export default class RedarGraph extends Component {
     }
 
     getOption(){
-        var month=[' ','12_th','11_th','10_th','9_th','8_th','7_th','6_th','5_th','4_th','3_rd','2_nd','1_st'];
+        var month=['12_th','11_th','10_th','9_th','8_th','7_th','6_th','5_th','4_th','3_rd','2_nd','1_st'];
         return {
             tooltip: {
                 trigger: 'axis'
@@ -84,7 +83,7 @@ export default class RedarGraph extends Component {
                 },{
                     indicator: (function (){
                         var res = [];
-                        for (var i = 1; i <= 12; i++) {
+                        for (let i = 0; i < 12; i++) {
                             res.push({text: month[i], max: 20});
                         }
                         return res;
@@ -113,6 +112,9 @@ export default class RedarGraph extends Component {
                     ]
                 },{
                     type: 'radar',
+                    tooltip: {
+                        trigger: 'item'
+                    },//鼠标悬浮展示数值
                     areaStyle: {},
                     radarIndex: 1,
                     color: ['#0082fc', '#f9e264'],

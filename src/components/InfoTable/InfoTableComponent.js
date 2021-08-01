@@ -17,9 +17,9 @@ export default class InfoTable extends Component{
         }
     }
 
-    componentWillReceiveProps(newProps) {// 点击之后第一行展示搜索数据
-      console.log(newProps.value)
-      this.handleSearch(['sid'], confirm, 'sid')
+    // componentWillReceiveProps(newProps) {// 点击之后第一行展示搜索数据
+    //   console.log(newProps.value)
+    //   this.handleSearch(['sid'], confirm, 'sid')
       // var newData = this.state.dataSource
       // fetch('/api/getOneFeature?sid=' + newProps.value, {
       //   method: 'get',
@@ -34,7 +34,7 @@ export default class InfoTable extends Component{
       //           sid: newProps.value
       //       })
       // });
-    }
+    // }
 
     componentDidMount() {
       var data = [];

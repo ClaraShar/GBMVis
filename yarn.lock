@@ -2874,12 +2874,12 @@
     "size-sensor" "^1.0.1"
 
 "echarts@^3.0.0 || ^4.0.0 || ^5.0.0", "echarts@^5.1.0":
-  "integrity" "sha1-dozFhaoJJWD0jwGy1S3kk67s0rA="
-  "resolved" "https://registry.npm.taobao.org/echarts/download/echarts-5.1.0.tgz"
-  "version" "5.1.0"
+  "integrity" "sha1-qhqwzvW3T6L3xiAmGl8oaJPTD9E="
+  "resolved" "https://registry.nlark.com/echarts/download/echarts-5.1.2.tgz?cache=0&sync_timestamp=1623167246710&other_urls=https%3A%2F%2Fregistry.nlark.com%2Fecharts%2Fdownload%2Fecharts-5.1.2.tgz"
+  "version" "5.1.2"
   dependencies:
     "tslib" "2.0.3"
-    "zrender" "5.1.0"
+    "zrender" "5.1.1"
 
 "ee-first@1.1.1":
   "integrity" "sha1-WQxhFWsK4vTwJVcyoViyZrxWsh0="
@@ -7870,7 +7870,7 @@
 
 "tslib@2.0.3":
   "integrity" "sha1-jgdBrEX8DCJuWKF7/D5kubxsphw="
-  "resolved" "https://registry.npm.taobao.org/tslib/download/tslib-2.0.3.tgz?cache=0&sync_timestamp=1617647331485&other_urls=https%3A%2F%2Fregistry.npm.taobao.org%2Ftslib%2Fdownload%2Ftslib-2.0.3.tgz"
+  "resolved" "https://registry.nlark.com/tslib/download/tslib-2.0.3.tgz"
   "version" "2.0.3"
 
 "tty-browserify@0.0.0":
@@ -8482,9 +8482,9 @@
     "y18n" "^3.2.1"
     "yargs-parser" "^4.2.0"
 
-"zrender@5.1.0":
-  "integrity" "sha1-tqhMOqfMxmQu4FGZAcpMCDXE2F4="
-  "resolved" "https://registry.npm.taobao.org/zrender/download/zrender-5.1.0.tgz"
-  "version" "5.1.0"
+"zrender@5.1.1":
+  "integrity" "sha1-BRX0+MwPR0LwKmuIGVUKbRPWTFw="
+  "resolved" "https://registry.nlark.com/zrender/download/zrender-5.1.1.tgz"
+  "version" "5.1.1"
   dependencies:
     "tslib" "2.0.3"

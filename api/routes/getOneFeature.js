@@ -1,3 +1,4 @@
+//获取一个学生的所有特征
 let util = require('./util')
 let featureModel = require('../../models/features')
 
