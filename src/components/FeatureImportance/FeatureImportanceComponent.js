@@ -47,18 +47,18 @@ export default class FeatureImportance extends Component{
                 boundaryGap: [0, 0.01],
                 // axisLine:{
                 //     lineStyle:{
-                //         color:'#FFF',
+                //         color:'#FFF',//白色
                 //     }
                 // }//注释后x轴显示数值
             },
             yAxis: {
                 type: 'category',
                 data: yname,
-                // axisLine:{
-                //     lineStyle:{
-                //         color:'#000',
-                //     },
-                // },//改变y轴label颜色
+                axisLine:{
+                    lineStyle:{
+                        color:'#000',//改变y轴label颜色
+                    },
+                },
                 axisLabel:{
                     rotate: 6,//倾斜显示
                     interval: 0,//y轴全部数值显示
