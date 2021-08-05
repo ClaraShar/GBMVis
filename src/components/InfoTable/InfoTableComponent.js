@@ -46,7 +46,7 @@ export default class InfoTable extends Component{
         }).then(res => res.json())
             .then(res => {
               var newData = []
-              res.data.data.map(((item, index) => {
+              res.data.data.map(((item) => {
                 newData.push(Object.assign({}, item, {
                     key: item.sid,
                 }))

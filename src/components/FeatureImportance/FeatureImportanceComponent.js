@@ -22,7 +22,7 @@ export default class FeatureImportance extends Component{
             title: {
                 text: 'Feature Importance',
                 x:'center',//居中
-                y:'10',
+                y:'10',//title在y上的位置
                 textStyle: {
                     // color: '#fff',
                 },
@@ -36,12 +36,12 @@ export default class FeatureImportance extends Component{
                     type: 'shadow'
                 }
             },
-            // grid: {//设置表格大小
-            //     left: '3%',
-            //     right: '4%',
-            //     bottom: '30%',
-            //     containLabel: true
-            // },
+            grid: {//设置表格大小
+                left: '3%',
+                right: '4%',
+                bottom: '30%',
+                containLabel: true
+            },
             xAxis: {
                 type: 'value',
                 boundaryGap: [0, 0.01],
@@ -56,17 +56,43 @@ export default class FeatureImportance extends Component{
                 data: yname,
                 // axisLine:{
                 //     lineStyle:{
-                //         color:'#FFF',
+                //         color:'#000',
                 //     },
-                // }//注释后y轴显示label
+                // },//改变y轴label颜色
+                axisLabel:{
+                    rotate: 6,//倾斜显示
+                    interval: 0,//y轴全部数值显示
+                    textStyle: {
+                        fontSize: '10',//字体大小
+                    },
+
+                }
             },
             series: [
                 {
                     name: 'feature importance',
                     type: 'bar',
                     // color: ['#0082fc'],
-                    data: ydata
+                    data: ydata,
+                    barWidth : 10,//柱图宽度
                 }
+            ],
+            dataZoom: [
+                {
+                    type: 'slider',
+                    show: true,
+                    yAxisIndex: [0],
+                    start: 0, //数据窗口范围的起始百分比
+                    end: 50
+                },
+                //滑块的属性
+                {
+                   type: 'inside',
+                   show: true,
+                   yAxisIndex: [0],
+                   start: 1,//默认为1
+                   end: 50,//默认为100
+                },
             ]
         }
     }

@@ -1,6 +1,7 @@
 import React, { Component } from 'react'
 import ReactEcharts from 'echarts-for-react'
-import echarts from 'echarts'
+import './style.css'
+import * as echarts from 'echarts' 
 
 export default class ScatterPlot extends Component{
     constructor(props){
@@ -27,6 +28,15 @@ export default class ScatterPlot extends Component{
                         newFNData = res.data.data[1],
                         newFPData = res.data.data[2],
                         newTPData = res.data.data[3];
+                    //翻转FN和TP
+                    newFNData.map((item) => {
+                        console.log(item)
+                        item[1] = 1 - item[1];
+                    })
+                    newTPData.map((item) => {
+                        console.log(item)
+                        item[1] = 1 - item[1];
+                    })
                     this.setState({
                         feature: newProps.value,
                         TNData: newTNData,
@@ -47,13 +57,14 @@ export default class ScatterPlot extends Component{
             //     color: '#cdd0d5'
             // }]),
             title: {
-                text: 'Confusion Scatter Plot'
+                text: 'Confusion Scatter Plot',
+                x:'center',//居中
             },
             legend: {
                 right: 10,
                 data: ['TP','TN','FP','FN'],
                 textStyle:{
-                    color:'#FFF',
+                    color:'#000',
                 },
             },
             xAxis: {
@@ -64,7 +75,7 @@ export default class ScatterPlot extends Component{
                 },
                 axisLine:{
                     lineStyle:{
-                        color:'#FFF',
+                        color:'#000',
                     },
                 }
             },
@@ -76,7 +87,7 @@ export default class ScatterPlot extends Component{
                 },
                 axisLine:{
                     lineStyle:{
-                        color:'#FFF',
+                        color:'#000',
                     },
                 },
                 scale: true
@@ -89,25 +100,28 @@ export default class ScatterPlot extends Component{
                     label: {
                         show: true,
                         textStyle:{
-                            color:'#FFF',
+                            color:'#000',
                         },
                         formatter: function (param) {
                             return "sid： "+param.data[2];
                         },
-                        position: 'top'
+                        position: 'top'//鼠标悬浮在点上，sid显示在点的上方
                     }
                 },
+                //样式改成气泡那种，有点气泡，透明渐变的感觉
                 itemStyle: {
                     shadowBlur: 10,
                     shadowColor: 'rgba(120, 36, 50, 0.5)',
                     shadowOffsetY: 5,
-                    // color: new echarts.graphic.RadialGradient(0.4, 0.3, 1, [{
-                    //     offset: 0,
-                    //     color: 'rgb(251, 118, 123)'
-                    // }, {
-                    //     offset: 1,
-                    //     color: 'rgb(204, 46, 72)'
-                    // }])
+                    // 暴力解决，跳过类型检查，避免报错
+                    // @ts-ignore
+                    color: new echarts.graphic.RadialGradient(0.4, 0.3, 1, [{
+                        offset: 0,
+                        color: 'rgb(250,128,114)'
+                    }, {
+                        offset: 1,
+                        color: 'rgb(255,69,0)'
+                    }])
                 }
             },{
                 name: 'TN',
@@ -117,7 +131,7 @@ export default class ScatterPlot extends Component{
                     label: {
                         show: true,
                         textStyle:{
-                            color:'#FFF',
+                            color:'#000',
                         },
                         formatter: function (param) {
                             return "sid： "+param.data[2];
@@ -125,18 +139,19 @@ export default class ScatterPlot extends Component{
                         position: 'top'
                     }
                 },
-                // itemStyle: {
-                //     shadowBlur: 10,
-                //     shadowColor: 'rgba(25, 100, 150, 0.5)',
-                //     shadowOffsetY: 5,
-                //     color: new echarts.graphic.RadialGradient(0.4, 0.3, 1, [{
-                //         offset: 0,
-                //         color: 'rgb(129, 227, 238)'
-                //     }, {
-                //         offset: 1,
-                //         color: 'rgb(25, 183, 207)'
-                //     }])
-                // }
+                itemStyle: {
+                    shadowBlur: 10,
+                    shadowColor: 'rgba(25, 100, 150, 0.5)',
+                    shadowOffsetY: 5,
+                    // @ts-ignore
+                    color: new echarts.graphic.RadialGradient(0.4, 0.3, 1, [{
+                        offset: 0,
+                        color: 'rgb(191,239,255)'
+                    }, {
+                        offset: 1,
+                        color: 'rgb(0,191,255)'
+                    }])
+                }
             },{
                 name: 'FP',
                 data: this.state.FPData,
@@ -145,7 +160,7 @@ export default class ScatterPlot extends Component{
                     label: {
                         show: true,
                         textStyle:{
-                            color:'#FFF',
+                            color:'#000',
                         },
                         formatter: function (param) {
                             return "sid： "+param.data[2];
@@ -153,18 +168,19 @@ export default class ScatterPlot extends Component{
                         position: 'top'
                     }
                 },
-                // itemStyle: {
-                //     shadowBlur: 10,
-                //     shadowColor: 'rgba(174, 181, 36, 0.5)',
-                //     shadowOffsetY: 5,
-                //     color: new echarts.graphic.RadialGradient(0.4, 0.3, 1, [{
-                //         offset: 0,
-                //         color: 'rgb(193, 201, 38)'
-                //     }, {
-                //         offset: 1,
-                //         color: 'rgb(510, 219, 44)'
-                //     }])
-                // }
+                itemStyle: {
+                    shadowBlur: 10,
+                    shadowColor: 'rgba(174, 181, 36, 0.5)',
+                    shadowOffsetY: 5,
+                    // @ts-ignore
+                    color: new echarts.graphic.RadialGradient(0.4, 0.3, 1, [{
+                        offset: 0,
+                        color: 'rgb(255,255,0)'
+                    }, {
+                        offset: 1,
+                        color: 'rgb(255,215,0)'
+                    }])
+                }
             },
             {
                 name: 'FN',
@@ -174,7 +190,7 @@ export default class ScatterPlot extends Component{
                     label: {
                         show: true,
                         textStyle:{
-                            color:'#FFF',
+                            color:'#000',
                         },
                         formatter: function (param) {
                             return "sid： "+param.data[2];
@@ -182,18 +198,19 @@ export default class ScatterPlot extends Component{
                         position: 'top'
                     }
                 },
-                // itemStyle: {
-                //     shadowBlur: 10,
-                //     shadowColor: 'rgba(171, 43, 194, 0.5)',
-                //     shadowOffsetY: 5,
-                //     color: new echarts.graphic.RadialGradient(0.4, 0.3, 1, [{
-                //         offset: 0,
-                //         color: 'rgb(189, 47, 214)'
-                //     }, {
-                //         offset: 1,
-                //         color: 'rgb(205, 49, 232)'
-                //     }])
-                // }
+                itemStyle: {
+                    shadowBlur: 10,
+                    shadowColor: 'rgba(171, 43, 194, 0.5)',
+                    shadowOffsetY: 5,
+                    // @ts-ignore
+                    color: new echarts.graphic.RadialGradient(0.4, 0.3, 1, [{
+                        offset: 0,
+                        color: 'rgb(118,238,0)'
+                    }, {
+                        offset: 1,
+                        color: 'rgb(102,205,0)'
+                    }])
+                }
             }
         ]
         };

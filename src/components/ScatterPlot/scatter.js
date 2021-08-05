@@ -83,6 +83,7 @@ $.get("data/TPTNFPFNdata.json", function(data){
                     position: 'top'
                 }
             },
+            //样式改成气泡那种，有点气泡，透明渐变的感觉
             itemStyle: {
                 shadowBlur: 10,
                 shadowColor: 'rgba(120, 36, 50, 0.5)',
