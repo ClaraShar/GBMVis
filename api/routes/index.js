@@ -17,6 +17,9 @@ module.exports = function(app){
     //获取全部数据的特征
     app.get('/api/features', require('./features'))
 
+    //获取全部数据归一化后的特征
+    app.get('/api/featuresNormalized', require('./featuresNormalized'))
+
     //按照TN，FN，FP，TP分类获取某个flag的某个特征的值
     app.get('/api/getConfusionFeature', require('./getConfusionFeature'))
 

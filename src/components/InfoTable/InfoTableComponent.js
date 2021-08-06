@@ -37,7 +37,6 @@ export default class InfoTable extends Component{
     // }
 
     componentDidMount() {
-      var data = [];
       fetch('/api/features', {
         method: 'get',
         headers: {
@@ -143,6 +142,6 @@ export default class InfoTable extends Component{
           }))
       })
   
-      return <Table style={{width: 1500}} columns={newColumns} dataSource={this.state.dataSource} scroll={{ x: 1000, y: 300 }} bordered/>;
+      return <Table style={{width: 1000}} columns={newColumns} dataSource={this.state.dataSource} scroll={{ x: 1000, y: 300 }} bordered/>;
     }
 }

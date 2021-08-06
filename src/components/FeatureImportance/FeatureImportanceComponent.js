@@ -11,6 +11,20 @@ export default class FeatureImportance extends Component{
         }
     }
 
+    componentDidMount() {
+        let myChart = this.echarts && this.echarts.getEchartsInstance(); 
+        //拿到实例后 通过getEchartsInstance()，在EchartsReactCore里ECharts实例
+        //注意EchartsReactCore实例和ECharts实例的区别 下面附上图片
+        //监听窗口onresize变化  这里有两种写法 推荐使用addEventListener写法 第一种方法绑定多个resize事件 会被覆盖
+        //这里只是简写 这里可以把函数提出来
+        //window.onresize = ()=> {
+        // myChart&&myChart.resize();
+        // };
+        window.addEventListener('resize',()=>{
+          myChart && myChart.resize();
+        })
+      }
+
     getOption = () => {
         var contData = {"6_hw": 27, "11_hw": 32, "12_hw": 43, "2_hw": 44, "1_hw": 49, "5_hw": 62, "9_hw": 62, "10_hw": 67, "3_hw": 67, "7_hw": 86, "4_hw": 91, "8_hw": 94, "6_lib": 108, "12_lib": 152, "11_lib": 166, "9_lib": 203, "5_lib": 222, "7_lib": 223, "8_lib": 231, "3_lib": 266, "10_lib": 278, "1_lib": 287, "2_lib": 293, "4_lib": 330, "linear_f": 652, "cal1_f": 657, "cal1_m": 683, "linear_m": 725}
         var yname = ['6_hw','11_hw','12_hw','2_hw','1_hw', '5_hw', '9_hw', '10_hw', '3_hw', '7_hw', '4_hw', '8_hw', '6_lib', '12_lib', '11_lib', '9_lib', '5_lib', '7_lib', '8_lib','3_lib','10_lib','1_lib','2_lib','4_lib','linear_f','cal1_f','cal1_m','linear_m'];
@@ -36,12 +50,12 @@ export default class FeatureImportance extends Component{
                     type: 'shadow'
                 }
             },
-            grid: {//设置表格大小
-                left: '3%',
-                right: '4%',
-                bottom: '30%',
-                containLabel: true
-            },
+            // grid: {//设置表格大小
+            //     left: '3%',
+            //     right: '4%',
+            //     bottom: '30%',
+            //     containLabel: true
+            // },
             xAxis: {
                 type: 'value',
                 boundaryGap: [0, 0.01],
@@ -74,7 +88,7 @@ export default class FeatureImportance extends Component{
                     type: 'bar',
                     // color: ['#0082fc'],
                     data: ydata,
-                    barWidth : 10,//柱图宽度
+                    barWidth : 12,//柱图宽度
                 }
             ],
             dataZoom: [
@@ -117,6 +131,7 @@ export default class FeatureImportance extends Component{
                     notMerge={true}
                     lazyUpdate={true}
                     onEvents={onEvents}//给条形图添加点击事件
+                    ref={(e) => { this.echarts = e;}} style={{width:'100%',height:'500px'}}
                 />
                 <ScatterPlot value={this.state.feature}/>
             </div>
