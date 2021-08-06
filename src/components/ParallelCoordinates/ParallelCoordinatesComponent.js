@@ -1,6 +1,7 @@
 import React, { Component } from 'react'
 import './style.css'
 import ReactEcharts from 'echarts-for-react'
+import 'echarts/lib/component/parallel'
 import HeatMap from '../HeatMap/HeatMapComponent'
 
 export default class FeatureImportance extends Component{
@@ -8,12 +9,13 @@ export default class FeatureImportance extends Component{
         super()
         this.state = {
             dataSource: [],
-            sid: ""
+            selected: []
         }
     }
 
     componentDidMount() {
         let myChart = this.echarts && this.echarts.getEchartsInstance(); 
+        this.echarts_instance = this.echarts_react.getEchartsInstance()
         //拿到实例后 通过getEchartsInstance()，在EchartsReactCore里ECharts实例
         //注意EchartsReactCore实例和ECharts实例的区别 下面附上图片
         //监听窗口onresize变化  这里有两种写法 推荐使用addEventListener写法 第一种方法绑定多个resize事件 会被覆盖
@@ -157,16 +159,22 @@ export default class FeatureImportance extends Component{
         }
     }
 
-    onClickItem = (params) => {
-        this.setState({
-            sid: params.value[28]
-        })
-        //点击之后state修改，传给热力图
+    onAxisAreaSelected = () => {
+        var series0 = this.echarts_instance.getModel().getSeries()[0];
+        var indices0 = series0.getRawIndicesByActiveState('active');//刷选出来的dataSource中的序号列表，从0开始计数
+        var selectedData = []
+        for(let i = 0; i < indices0.length; i++){
+            selectedData.push(this.state.dataSource[indices0[i]])
+        }
+        // 选中的所有数据都传过来
+        // this.setState({
+        //     selected: selectedData
+        // })//这里有问题，会报错
     }
 
     render(){
         const onEvents = {
-            "click": this.onClickItem
+            "axisareaselected": this.onAxisAreaSelected
         }
 
         return(
@@ -175,10 +183,10 @@ export default class FeatureImportance extends Component{
                     option={this.getOption()}
                     notMerge={true}
                     lazyUpdate={true}
-                    ref={(e) => { this.echarts = e;}} style={{width:1500,height:500}}
+                    ref={(e) => { this.echarts_react = e;}} style={{width:1500,height:500}}
                     onEvents={onEvents}
                 />
-                <HeatMap value={this.state.sid}/>
+                {/* <HeatMap value={this.state.selected}/> */}
             </div>
         )
     }

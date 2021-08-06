@@ -6,8 +6,7 @@ export default class ScatterPlot extends Component{
     constructor(props){
         super(props)
         this.state = {
-            sid: "",
-            dataSource: []
+            selected: []//选中的所有数据都传过来
         }
     }
 
