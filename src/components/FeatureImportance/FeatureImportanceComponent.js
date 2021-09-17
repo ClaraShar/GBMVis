@@ -131,7 +131,7 @@ export default class FeatureImportance extends Component{
                     notMerge={true}
                     lazyUpdate={true}
                     onEvents={onEvents}//给条形图添加点击事件
-                    ref={(e) => { this.echarts = e;}} style={{width:'100%',height:'500px'}}
+                    ref={(e) => { this.echarts = e;}} style={{width:'100%',height:'600px'}}
                 />
                 <ScatterPlot value={this.state.feature}/>
             </div>

@@ -15,6 +15,20 @@ export default class ScatterPlot extends Component{
         }
     }
 
+    componentDidMount() {
+        let myChart = this.echarts && this.echarts.getEchartsInstance(); 
+        //拿到实例后 通过getEchartsInstance()，在EchartsReactCore里ECharts实例
+        //注意EchartsReactCore实例和ECharts实例的区别 下面附上图片
+        //监听窗口onresize变化  这里有两种写法 推荐使用addEventListener写法 第一种方法绑定多个resize事件 会被覆盖
+        //这里只是简写 这里可以把函数提出来
+        //window.onresize = ()=> {
+        // myChart&&myChart.resize();
+        // };
+        window.addEventListener('resize',()=>{
+          myChart && myChart.resize();
+        })
+      }
+
     componentWillReceiveProps(newProps) {
         console.log(newProps.value)
         fetch('/api/getAllConfusionFeature?feature=' + newProps.value, {
@@ -218,13 +232,14 @@ export default class ScatterPlot extends Component{
 
     render(){
         return(
-            <div className="scatter">
+            // <div className="scatter">
                 <ReactEcharts
                     option={this.getOption()}
                     notMerge={true}
                     lazyUpdate={true}
+                    ref={(e) => { this.echarts = e;}} style={{width:'100%',height:'600px'}}
                 />
-            </div>
+            // </div>
         )
     }
 }

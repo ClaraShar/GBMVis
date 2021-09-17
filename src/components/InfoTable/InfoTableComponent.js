@@ -142,6 +142,6 @@ export default class InfoTable extends Component{
           }))
       })
   
-      return <Table style={{width: 1000}} columns={newColumns} dataSource={this.state.dataSource} scroll={{ x: 1000, y: 300 }} bordered/>;
+      return <Table style={{width: 1200}} columns={newColumns} dataSource={this.state.dataSource} scroll={{ x: 1000, y: 300 }} bordered/>;
     }
 }

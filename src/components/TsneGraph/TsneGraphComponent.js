@@ -3,7 +3,6 @@ import * as d3 from 'd3'
 import ReactEcharts from 'echarts-for-react'
 import './style.css'
 import RedarGraph from '../RedarGraph/RedarGraphComponent'
-import InfoTable from '../InfoTable/InfoTableComponent'
 
 export default class TsneGraph extends Component{
     constructor() {
@@ -16,6 +15,17 @@ export default class TsneGraph extends Component{
     }
 
     componentDidMount() {
+        let myChart = this.echarts && this.echarts.getEchartsInstance(); 
+        //拿到实例后 通过getEchartsInstance()，在EchartsReactCore里ECharts实例
+        //注意EchartsReactCore实例和ECharts实例的区别 下面附上图片
+        //监听窗口onresize变化  这里有两种写法 推荐使用addEventListener写法 第一种方法绑定多个resize事件 会被覆盖
+        //这里只是简写 这里可以把函数提出来
+        //window.onresize = ()=> {
+        // myChart&&myChart.resize();
+        // };
+        window.addEventListener('resize',()=>{
+          myChart && myChart.resize();
+        })
         fetch('/api/tsne', {
             method: 'get',
             headers: {
@@ -101,7 +111,7 @@ export default class TsneGraph extends Component{
                     }
                 },
             series: [{
-                symbolSize: 5,
+                symbolSize: 6,
                 data: this.state.data,
                 type: 'scatter',
                 itemStyle:{
@@ -134,6 +144,7 @@ export default class TsneGraph extends Component{
                     notMerge={true}
                     lazyUpdate={true}
                     onEvents={onEvents}
+                    ref={(e) => { this.echarts = e;}} style={{width:'100%',height:'600px'}}
                 />
                 <RedarGraph value={this.state.sid}/>
             </div>

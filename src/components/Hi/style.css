@@ -1,0 +1,10 @@
+.info-table {
+    margin-left: 2%;
+    margin-top: -5%;
+}
+
+.flex-wrap {
+    display: flex;
+    flex-direction: row;
+    margin-left: -5%;
+}

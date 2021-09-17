@@ -167,9 +167,9 @@ export default class FeatureImportance extends Component{
             selectedData.push(this.state.dataSource[indices0[i]])
         }
         // 选中的所有数据都传过来
-        // this.setState({
-        //     selected: selectedData
-        // })//这里有问题，会报错
+        this.setState({
+            selected: selectedData
+        })//这里有问题，会报错
     }
 
     render(){
