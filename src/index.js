@@ -1,13 +1,22 @@
-import React from 'react'
-import ReactDom from 'react-dom'
-import TsneGraph from './components/TsneGraph/TsneGraphComponent'
-import Hi from './components/Hi/Hi'
+import React, {Component} from 'react';
+import ReactDom from 'react-dom';
+import AppIndex from './components/AppIndex';
+import { Provider } from 'react-redux';
+import configureStore from './configureStore';
+import { AppContainer } from 'react-hot-loader';
+
+const store = configureStore();
+
+ReactDom.render(
+    <AppContainer>
+        <Provider store={ store }>
+            <AppIndex/>
+        </Provider>
+    </AppContainer>
+
+, document.getElementById('app'));
 
 // 热模块替换，和路由有关的暂不修改（renderWithHotReload）
 if (module.hot) {
     module.hot.accept();
 }
-
-ReactDom.render(
-    <Hi />, document.getElementById('app'));
-// ReactDOM.render(<Table columns={columns} dataSource={data} />, mountNode);

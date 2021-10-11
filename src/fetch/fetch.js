@@ -2,7 +2,7 @@ import axios from 'axios'
 
 //好像是红宝书上24章跨域请求资源
 let config = {
-    baseURL : '/',
+    baseURL : '/api', //雨薇姐这里是‘/’
     transfromRequest: [
         function(data) {
             let ret = '';
@@ -20,7 +20,7 @@ let config = {
     headers:{
         'Content-Type': 'application/x-www-form-urlencoded;charset=UTF-8'
     },
-    timeout: 50000,
+    timeout: 10000,
     responseType: 'json'
 }
 
