@@ -6,7 +6,8 @@ module.exports = {
  
     /*入口*/
     entry: [
-        'react-hot-loader/patch','babel-polyfill',
+        'babel-polyfill',
+        'react-hot-loader/patch',
         path.join(__dirname, 'src/index.js')
     ],
     

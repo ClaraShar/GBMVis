@@ -36,7 +36,7 @@
     "lodash" "^4.17.21"
     "resize-observer-polyfill" "^1.5.0"
 
-"@babel/runtime@^7.10.1", "@babel/runtime@^7.10.2", "@babel/runtime@^7.10.4", "@babel/runtime@^7.11.1", "@babel/runtime@^7.11.2", "@babel/runtime@^7.12.5", "@babel/runtime@^7.6.3", "@babel/runtime@^7.8.4", "@babel/runtime@^7.9.2":
+"@babel/runtime@^7.10.1", "@babel/runtime@^7.10.2", "@babel/runtime@^7.10.4", "@babel/runtime@^7.11.1", "@babel/runtime@^7.11.2", "@babel/runtime@^7.12.1", "@babel/runtime@^7.12.5", "@babel/runtime@^7.6.3", "@babel/runtime@^7.8.4", "@babel/runtime@^7.9.2":
   "integrity" "sha1-RnlLwgthLF915i3QceJN/ZXxy+Y="
   "resolved" "https://registry.nlark.com/@babel/runtime/download/@babel/runtime-7.14.0.tgz?cache=0&sync_timestamp=1619727501090&other_urls=https%3A%2F%2Fregistry.nlark.com%2F%40babel%2Fruntime%2Fdownload%2F%40babel%2Fruntime-7.14.0.tgz"
   "version" "7.14.0"
@@ -99,6 +99,14 @@
   dependencies:
     "@types/node" "*"
 
+"@types/hoist-non-react-statics@^3.3.0":
+  "integrity" "sha1-ESSq/lEYy1kZd66xzqrtEHDrA58="
+  "resolved" "https://registry.nlark.com/@types/hoist-non-react-statics/download/@types/hoist-non-react-statics-3.3.1.tgz"
+  "version" "3.3.1"
+  dependencies:
+    "@types/react" "*"
+    "hoist-non-react-statics" "^3.3.0"
+
 "@types/mongodb@^3.5.27":
   "integrity" "sha1-cnlg0081BU0vLOaJCeFglPdC2TU="
   "resolved" "https://registry.npm.taobao.org/@types/mongodb/download/@types/mongodb-3.6.12.tgz"
@@ -117,7 +125,17 @@
   "resolved" "https://registry.npm.taobao.org/@types/prop-types/download/@types/prop-types-15.7.3.tgz?cache=0&sync_timestamp=1613379633472&other_urls=https%3A%2F%2Fregistry.npm.taobao.org%2F%40types%2Fprop-types%2Fdownload%2F%40types%2Fprop-types-15.7.3.tgz"
   "version" "15.7.3"
 
-"@types/react@^15.0.0 || ^16.0.0 || ^17.0.0 ":
+"@types/react-redux@^7.1.16":
+  "integrity" "sha1-R3vQqbAbrm1r+AlBjN+n08FtTGI="
+  "resolved" "https://registry.npmmirror.com/@types/react-redux/download/@types/react-redux-7.1.19.tgz"
+  "version" "7.1.19"
+  dependencies:
+    "@types/hoist-non-react-statics" "^3.3.0"
+    "@types/react" "*"
+    "hoist-non-react-statics" "^3.3.0"
+    "redux" "^4.0.0"
+
+"@types/react@*", "@types/react@^15.0.0 || ^16.0.0 || ^17.0.0 ":
   "integrity" "sha1-um4hU2hQGsOCaVHu8pBFdMJizHk="
   "resolved" "https://registry.npm.taobao.org/@types/react/download/@types/react-17.0.3.tgz?cache=0&sync_timestamp=1615114060788&other_urls=https%3A%2F%2Fregistry.npm.taobao.org%2F%40types%2Freact%2Fdownload%2F%40types%2Freact-17.0.3.tgz"
   "version" "17.0.3"
@@ -3689,7 +3707,7 @@
     "minimalistic-assert" "^1.0.0"
     "minimalistic-crypto-utils" "^1.0.1"
 
-"hoist-non-react-statics@^3.3.0":
+"hoist-non-react-statics@^3.3.0", "hoist-non-react-statics@^3.3.2":
   "integrity" "sha1-7OCsr3HWLClpwuxZ/v9CpLGoW0U="
   "resolved" "https://registry.npm.taobao.org/hoist-non-react-statics/download/hoist-non-react-statics-3.3.2.tgz?cache=0&sync_timestamp=1609924949968&other_urls=https%3A%2F%2Fregistry.npm.taobao.org%2Fhoist-non-react-statics%2Fdownload%2Fhoist-non-react-statics-3.3.2.tgz"
   "version" "3.3.2"
@@ -6205,7 +6223,7 @@
   "resolved" "https://registry.npm.taobao.org/process/download/process-0.11.10.tgz"
   "version" "0.11.10"
 
-"prop-types@^15.5.8", "prop-types@^15.6.1":
+"prop-types@^15.5.8", "prop-types@^15.6.1", "prop-types@^15.7.2":
   "integrity" "sha1-UsQedbjIfnK52TYOAga5ncv/psU="
   "resolved" "https://registry.npm.taobao.org/prop-types/download/prop-types-15.7.2.tgz"
   "version" "15.7.2"
@@ -6708,7 +6726,7 @@
     "memoize-one" "^4.0.0"
     "prop-types" "^15.5.8"
 
-"react-hot-loader@^4.0.0-beta.21":
+"react-hot-loader@^4.13.0":
   "integrity" "sha1-wn6UCFgcKmePUxbmnAYbIm3GogI="
   "resolved" "https://registry.npm.taobao.org/react-hot-loader/download/react-hot-loader-4.13.0.tgz"
   "version" "4.13.0"
@@ -6722,7 +6740,7 @@
     "shallowequal" "^1.1.0"
     "source-map" "^0.7.3"
 
-"react-is@^16.12.0", "react-is@^16.7.0", "react-is@^16.8.1":
+"react-is@^16.12.0", "react-is@^16.13.1", "react-is@^16.7.0", "react-is@^16.8.1":
   "integrity" "sha1-eJcppNw23imZ3BVt1sHZwYzqVqQ="
   "resolved" "https://registry.nlark.com/react-is/download/react-is-16.13.1.tgz"
   "version" "16.13.1"
@@ -6732,7 +6750,19 @@
   "resolved" "https://registry.npm.taobao.org/react-lifecycles-compat/download/react-lifecycles-compat-3.0.4.tgz"
   "version" "3.0.4"
 
-"react@*", "react@^0.14.0 || ^15.0.0 || ^16.0.0-0 || ^17.0.0-0", "react@^15.0.0 || ^16.0.0 || ^17.0.0 ", "react@^15.0.0 || >=16.0.0", "react@^17.0.2", "react@>= 16.9.0", "react@>=16.0.0", "react@>=16.9.0", "react@17.0.2":
+"react-redux@^7.2.5":
+  "integrity" "sha1-ITwbBaoRh9nJQN38CylFCVf2o7g="
+  "resolved" "https://registry.npmmirror.com/react-redux/download/react-redux-7.2.5.tgz"
+  "version" "7.2.5"
+  dependencies:
+    "@babel/runtime" "^7.12.1"
+    "@types/react-redux" "^7.1.16"
+    "hoist-non-react-statics" "^3.3.2"
+    "loose-envify" "^1.4.0"
+    "prop-types" "^15.7.2"
+    "react-is" "^16.13.1"
+
+"react@*", "react@^0.14.0 || ^15.0.0 || ^16.0.0-0 || ^17.0.0-0", "react@^15.0.0 || ^16.0.0 || ^17.0.0 ", "react@^15.0.0 || >=16.0.0", "react@^16.8.3 || ^17", "react@^17.0.2", "react@>= 16.9.0", "react@>=16.0.0", "react@>=16.9.0", "react@17.0.2":
   "integrity" "sha1-0LXMUW0p6z7uOD91tihkz7aAADc="
   "resolved" "https://registry.nlark.com/react/download/react-17.0.2.tgz"
   "version" "17.0.2"
@@ -6874,7 +6904,7 @@
   "resolved" "https://registry.npm.taobao.org/redux-thunk/download/redux-thunk-2.3.0.tgz"
   "version" "2.3.0"
 
-"redux@^4.0.4":
+"redux@^4.0.0", "redux@^4.0.4":
   "integrity" "sha1-6wSWefL1I8N58a/zRchhLylMiNQ="
   "resolved" "https://registry.nlark.com/redux/download/redux-4.1.0.tgz?cache=0&sync_timestamp=1619286844146&other_urls=https%3A%2F%2Fregistry.nlark.com%2Fredux%2Fdownload%2Fredux-4.1.0.tgz"
   "version" "4.1.0"

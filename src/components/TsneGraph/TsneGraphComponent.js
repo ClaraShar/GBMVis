@@ -5,8 +5,8 @@ import './style.css'
 import RedarGraph from '../RedarGraph/RedarGraphComponent'
 
 export default class TsneGraph extends Component{
-    constructor() {
-        super();
+    constructor(props) {
+        super(props);
         this.state = {
             data: [],
             groupColors: [],

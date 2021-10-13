@@ -2,7 +2,7 @@ import { combineReducers } from 'redux';
 import { features } from './features';
 
 const initialState = {
-    isFectching: true,
+    isFetching: true,
     msg: {
         type: 1,
         content: ''
@@ -20,17 +20,17 @@ export function reducer(state=initialState, action){
         case actionTypes.FETCH_START:
             return {
                 ...state,
-                isFectching: true
+                isFetching: true
             }
         case actionTypes.FETCH_END:
             return {
                 ...state,
-                isFectching: false
+                isFetching: false
             }
         case actionTypes.SET_MESSAGE:
             return {
                 ...state,
-                isFectching: false,
+                isFetching: false,
                 msg: {
                     type: action.msgType,
                     content: action.msgContent

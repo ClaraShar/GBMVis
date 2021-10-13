@@ -6,7 +6,7 @@ import TsneGraph from './TsneGraph/TsneGraphComponent'
 import InfoTable from './InfoTable/InfoTableComponent'
 import FeatureImportance from './FeatureImportance/FeatureImportanceComponent'
 import ParallelCoordinates from './ParallelCoordinates/ParallelCoordinatesComponent'
-import style from './style.css';
+import './style.css'
 
 const { get_features_data } = FeaturesActions
 
@@ -17,31 +17,42 @@ class AppIndex extends Component{
 
     render(){
         return (
-            // 这部分还没改
-            <div className={style.MaterialVis}>
-                <div className='toolLip'></div>
-                <div className={style.ControlPannelBox}>
-                    <ControlPannelComponent/>
+            <div className='GBMVis'>
+                {/* <div className="flex-wrap">
+                    <TsneGraph />
+                    <FeatureImportance />
+                </div> */}
+                <div className="info-table">
+                    <InfoTable featuresData={this.props.featuresData}/>
                 </div>
-                <div className={style.DataOverviewBox}>
-                    <div className={style.GroupViewBox}>
-                        <div className={style.ScatterPlot}>
-                            <ScatterPlotComponent materialData={this.props.materialData}/>
-                        </div>
-                        <div className={style.ClusterComparePlot}>
-                            <FeatureHeatmapComponentColumn materialData={this.props.materialData}/>
-                        </div>
-                        <div className={style.EgoNetworkPlot}>
-                            <EgoNetworkPlotComponent materialData={this.props.materialData}/>
-                        </div>
-                    </div>
-                    <div className={style.MaterialParaCooBox}>
-                        <div className={style.MaterialParaCooPlot}>
-                            <ParaCooPlotComponent materialData={this.props.materialData}/>
-                        </div>
-                    </div>
-                </div>
+                {/* <div className="parallel">
+                    <ParallelCoordinates />
+                </div> */}
             </div>
+            
+            // <div className='GBMVis'>
+            //     <div className={style.ControlPannelBox}>
+            //         <ControlPannelComponent/>
+            //     </div>
+            //     <div className={style.DataOverviewBox}>
+            //         <div className={style.GroupViewBox}>
+            //             <div className={style.ScatterPlot}>
+            //                 <ScatterPlotComponent materialData={this.props.materialData}/>
+            //             </div>
+            //             <div className={style.ClusterComparePlot}>
+            //                 <FeatureHeatmapComponentColumn materialData={this.props.materialData}/>
+            //             </div>
+            //             <div className={style.EgoNetworkPlot}>
+            //                 <EgoNetworkPlotComponent materialData={this.props.materialData}/>
+            //             </div>
+            //         </div>
+            //         <div className={style.MaterialParaCooBox}>
+            //             <div className={style.MaterialParaCooPlot}>
+            //                 <ParaCooPlotComponent materialData={this.props.materialData}/>
+            //             </div>
+            //         </div>
+            //     </div>
+            // </div>
         )
     }
 

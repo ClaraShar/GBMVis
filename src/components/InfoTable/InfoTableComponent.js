@@ -16,44 +16,23 @@ export default class InfoTable extends Component{
           searchedColumn: '',
         }
     }
-
-    // componentWillReceiveProps(newProps) {// 点击之后第一行展示搜索数据
-    //   console.log(newProps.value)
-    //   this.handleSearch(['sid'], confirm, 'sid')
-      // var newData = this.state.dataSource
-      // fetch('/api/getOneFeature?sid=' + newProps.value, {
-      //   method: 'get',
-      //   headers: {
-      //           'Accept': 'application/json',
-      //       },
-      //   }).then(res => res.json())
-      //       .then(res => {
-      //         newData.unshift(res.data.data)
-      //         this.setState({
-      //           dataSource: newData,
-      //           sid: newProps.value
-      //       })
-      // });
-    // }
-
+  
     componentDidMount() {
-      fetch('/api/features', {
-        method: 'get',
-        headers: {
-                'Accept': 'application/json',
-            },
-        }).then(res => res.json())
-            .then(res => {
-              var newData = []
-              res.data.data.map(((item) => {
-                newData.push(Object.assign({}, item, {
-                    key: item.sid,
-                }))
-            }))
-            this.setState({
-              dataSource: newData
-            })
-      });
+       console.log("DidMount")
+      //  console.log(this.props.featuresData.data)      
+       // 从console顺序得知，先加载组件（执行componentDidMount），再异步获取数据，所以在这里打印this.props.featuresData为空
+
+      // 现在的问题是，render中可以直接用this.props.featuresData.data读取数据，但是该在哪里加key呢？或者说如果想在render中用state，该怎么做呢？
+      // let getData = this.props.featuresData.data
+      // var newData = []
+      // getData.map(((item) => {
+      // newData.push(Object.assign({}, item, {
+      //     key: item.sid,
+      //   }))
+      // }))
+      // this.setState({
+      //   dataSource: newData
+      // })
     }
 
     getColumnSearchProps = dataIndex => ({
@@ -141,7 +120,6 @@ export default class InfoTable extends Component{
               ...this.getColumnSearchProps(item.key)
           }))
       })
-  
-      return <Table style={{width: 1200}} columns={newColumns} dataSource={this.state.dataSource} scroll={{ x: 1000, y: 300 }} bordered/>;
+      return <Table style={{width: 1200}} columns={newColumns} dataSource={this.props.featuresData.data} scroll={{ x: 1000, y: 300 }} bordered/>;
     }
 }
