@@ -2,6 +2,7 @@ import React, { Component } from 'react';
 import { connect } from 'react-redux';
 import { bindActionCreators } from 'redux';
 import { actions as FeaturesActions } from '../reducers/features';
+import { actions as TsneActions } from '../reducers/tsne'
 import TsneGraph from './TsneGraph/TsneGraphComponent'
 import InfoTable from './InfoTable/InfoTableComponent'
 import FeatureImportance from './FeatureImportance/FeatureImportanceComponent'
@@ -9,6 +10,7 @@ import ParallelCoordinates from './ParallelCoordinates/ParallelCoordinatesCompon
 import './style.css'
 
 const { get_features_data } = FeaturesActions
+const { get_tsne_data } = TsneActions
 
 class AppIndex extends Component{
     constructor(props){
@@ -18,10 +20,10 @@ class AppIndex extends Component{
     render(){
         return (
             <div className='GBMVis'>
-                {/* <div className="flex-wrap">
-                    <TsneGraph />
-                    <FeatureImportance />
-                </div> */}
+                <div className="flex-wrap">
+                    <TsneGraph tsneData={this.props.tsneData}/>
+                    {/* <FeatureImportance /> */}
+                </div>
                 <div className="info-table">
                     <InfoTable featuresData={this.props.featuresData}/>
                 </div>
@@ -58,18 +60,22 @@ class AppIndex extends Component{
 
     componentDidMount(){
         this.props.get_features_data()
+        this.props.get_tsne_data()
     }
 }
 
 function mapStateToProps(state){
     return{
-        featuresData: state.features.featuresData
+        featuresData: state.features.featuresData,
+        tsneData: state.tsne.tsneData
     }
 }
 
 function mapDispatchToProps(dispatch){
     return{
-        get_features_data: bindActionCreators(get_features_data, dispatch)
+        get_features_data: bindActionCreators(get_features_data, dispatch),
+        get_tsne_data: bindActionCreators(get_tsne_data, dispatch)
+
     }
 }
 

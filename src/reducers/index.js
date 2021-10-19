@@ -1,5 +1,6 @@
 import { combineReducers } from 'redux';
 import { features } from './features';
+import { tsne } from './tsne';
 
 const initialState = {
     isFetching: true,
@@ -43,5 +44,6 @@ export function reducer(state=initialState, action){
 
 export default combineReducers({
     features,
+    tsne,
     globalState: reducer
 });

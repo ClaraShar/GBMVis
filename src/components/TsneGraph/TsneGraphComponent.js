@@ -26,30 +26,30 @@ export default class TsneGraph extends Component{
         window.addEventListener('resize',()=>{
           myChart && myChart.resize();
         })
-        fetch('/api/tsne', {
-            method: 'get',
-            headers: {
-                'Accept': 'application/json',
-            },
-        }).then(res => res.json())
-            .then(res => {
-                var json = res.data.data, 
-                    newdata = [],
-                    newgroupColors = [];
-                for(var i=0,l=json.length;i<l;i++){
-                    var e=[];
-                    e.push(json[i]['x']);
-                    e.push(json[i]['y']);
-                    e.push(json[i].sid);
-                    e.push(json[i].prob);
-                    newdata.push(e);
-                    newgroupColors.push(d3.interpolateRdYlBu(json[i].prob));
-                }
-                this.setState({
-                    data: newdata,
-                    groupColors: newgroupColors,
-                })
-          });
+        // fetch('/api/tsne', {
+        //     method: 'get',
+        //     headers: {
+        //         'Accept': 'application/json',
+        //     },
+        // }).then(res => res.json())
+        //     .then(res => {
+        //         var json = res.data.data, 
+        //             newdata = [],
+        //             newgroupColors = [];
+        //         for(var i=0,l=json.length;i<l;i++){
+        //             var e=[];
+        //             e.push(json[i]['x']);
+        //             e.push(json[i]['y']);
+        //             e.push(json[i].sid);
+        //             e.push(json[i].prob);
+        //             newdata.push(e);
+        //             newgroupColors.push(d3.interpolateRdYlBu(json[i].prob));
+        //         }
+        //         this.setState({
+        //             data: newdata,
+        //             groupColors: newgroupColors,
+        //         })
+        //   });
     }
 
     getOption = (colors) => {
@@ -146,7 +146,7 @@ export default class TsneGraph extends Component{
                     onEvents={onEvents}
                     ref={(e) => { this.echarts = e;}} style={{width:'100%',height:'600px'}}
                 />
-                <RedarGraph value={this.state.sid}/>
+                {/* <RedarGraph value={this.state.sid}/> */}
             </div>
         )
     }

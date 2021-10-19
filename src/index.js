@@ -12,7 +12,7 @@ if (module.hot) {
 
 const store = configureStore();
 
-// AppContainer和Provider各报3个错
+
 ReactDom.render(
     <AppContainer>
         <Provider store={store}>
